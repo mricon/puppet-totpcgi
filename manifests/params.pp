@@ -108,6 +108,7 @@ class totpcgi::params {
   # client only configs
   $host             = undef
   $host_ip          = undef
+  $set_hosts_entry  = true
   $pam_url_config   = '/etc/pam_url.conf'
   $pam_url_prompt   = 'Token: '
 

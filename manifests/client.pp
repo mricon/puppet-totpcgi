@@ -18,6 +18,7 @@
 class totpcgi::client (
   $host             = $totpcgi::params::host,
   $host_ip          = $totpcgi::params::host_ip,
+  $set_hosts_entry  = $totpcgi::params::set_hosts_entry,
   $pam_url_config   = $totpcgi::params::pam_url_config,
   $port             = $totpcgi::params::port,
   $return_code      = $totpcgi::params::success_string,
@@ -34,8 +35,10 @@ class totpcgi::client (
     require => Class['::totpcgi::repo'],
   }
 
-  host { $host:
-    ip => $host_ip,
+  if $set_hosts_entry {
+    host { $host:
+      ip => $host_ip,
+    }
   }
 
   file { $pam_url_config:
