@@ -505,6 +505,13 @@ totpcgi server host ip address
 
 - *Default*: undef
 
+set_hosts_entry
+---------------
+Whether to add the totpcgi server ip/hostname in /etc/hosts, to make sure that
+it is still possible to sudo even when DNS resolution is not working.
+
+- *Default*: true
+
 pam_url_config
 --------------
 path to the pam_url.conf
