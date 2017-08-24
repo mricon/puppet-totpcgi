@@ -74,21 +74,23 @@ class totpcgi::config (
   }
 
   file { $totpcgi_config:
-    ensure  => file,
-    seltype => 'totpcgi_etc_t',
-    owner   => $totpcgi_owner,
-    group   => $totpcgi_group,
-    mode    => '0640',
-    content => template('totpcgi/totpcgi.conf.erb'),
+    ensure    => file,
+    seltype   => 'totpcgi_etc_t',
+    owner     => $totpcgi_owner,
+    group     => $totpcgi_group,
+    mode      => '0640',
+    content   => template('totpcgi/totpcgi.conf.erb'),
+    show_diff => false,
   }
 
   file { $provisioning_config:
-    ensure  => file,
-    seltype => 'totpcgi_etc_t',
-    owner   => $provisioning_owner,
-    group   => $provisioning_group,
-    mode    => '0640',
-    content => template('totpcgi/provisioning.conf.erb'),
+    ensure    => file,
+    seltype   => 'totpcgi_etc_t',
+    owner     => $provisioning_owner,
+    group     => $provisioning_group,
+    mode      => '0640',
+    content   => template('totpcgi/provisioning.conf.erb'),
+    show_diff => false,
   }
 
   if $secret_engine == 'file' {
