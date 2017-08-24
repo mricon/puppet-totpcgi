@@ -22,8 +22,6 @@ class totpcgi::service (
   $serveradmin,
   $docroot,
   $suexec_user_group,
-  $ssl              = true,
-  $ssl_certs_dir    = undef,
   $ssl_cacert,
   $ssl_cert,
   $ssl_key,
@@ -31,6 +29,8 @@ class totpcgi::service (
   $ssl_verify_depth,
   $totpcgi_owner,
   $totpcgi_group,
+  $ssl              = true,
+  $ssl_certs_dir    = undef,
   $access_log_file  = undef,
   $error_log_file   = undef,
   $directories      = undef,
@@ -63,7 +63,7 @@ class totpcgi::service (
     validate_hash($directories)
   }
 
-  class { 'apache':
+  class { '::apache':
     default_vhost => false,
   }
 

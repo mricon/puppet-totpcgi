@@ -37,15 +37,16 @@ class totpcgi::config (
   $templates_dir,
   $trust_http_auth,
   $secret_engine,
+  $pincode_engine,
+  $pincode_usehash,
+  $pincode_makedb,
+  $state_engine,
   $secrets_dir                = undef,
   $secret_pg_connect_string   = undef,
   $secret_mysql_connect_host  = undef,
   $secret_mysql_connect_user  = undef,
   $secret_mysql_connect_password = undef,
   $secret_mysql_connect_db    = undef,
-  $pincode_engine,
-  $pincode_usehash,
-  $pincode_makedb,
   $pincode_file               = undef,
   $pincode_pg_connect_string  = undef,
   $pincode_mysql_connect_host = undef,
@@ -55,7 +56,6 @@ class totpcgi::config (
   $pincode_ldap_url           = undef,
   $pincode_ldap_dn            = undef,
   $pincode_ldap_cacert        = undef,
-  $state_engine,
   $state_dir                = undef,
   $state_pg_connect_string  = undef,
   $state_mysql_connect_host = undef,
@@ -134,9 +134,9 @@ class totpcgi::config (
   }
 
   if $broken_selinux_python_policy {
-    include selinux::base
-    selinux::module { 'mytotpcgi':
-      source => 'puppet:///modules/totpcgi/mytotpcgi.te'
+    include ::selinux::base
+    ::selinux::module { 'mytotpcgi':
+      source => 'puppet:///modules/totpcgi/mytotpcgi.te',
     }
   }
 

@@ -28,8 +28,8 @@ class totpcgi::client (
   $ssl_key          = $totpcgi::params::ssl_key,
 ) inherits totpcgi::params {
 
-  include pam
-  include totpcgi::repo
+  include ::pam
+  include ::totpcgi::repo
 
   package { 'pam_url':
     require => Class['::totpcgi::repo'],

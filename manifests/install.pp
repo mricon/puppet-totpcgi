@@ -24,7 +24,7 @@ class totpcgi::install (
 
   if ($install_totpcgi) {
 
-    include totpcgi::repo
+    include ::totpcgi::repo
     users { 'totpcgi': }
 
     package { ['totpcgi', 'totpcgi-selinux', 'totpcgi-provisioning']:

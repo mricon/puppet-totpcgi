@@ -100,12 +100,12 @@ class totpcgi (
   anchor { 'totpcgi::begin': }
   anchor { 'totpcgi::end': }
 
-  class { 'totpcgi::install':
+  class { '::totpcgi::install':
     install_totpcgi => $install_totpcgi,
     install_qrcode  => $install_qrcode,
   }
 
-  class { 'totpcgi::config':
+  class { '::totpcgi::config':
     # lint:ignore:arrow_alignment
     totpcgi_config                  => $totpcgi_config,
     totpcgi_config_dir              => $totpcgi_config_dir,
@@ -156,7 +156,7 @@ class totpcgi (
     # lint:endignore
   }
 
-  class { 'totpcgi::service':
+  class { '::totpcgi::service':
     vhost_name        => $vhost_name,
     port              => $port,
     servername        => $servername,
@@ -179,9 +179,9 @@ class totpcgi (
     provisioning      => $provisioning,
   }
 
-  Anchor['totpcgi::begin'] ->
-    Class['totpcgi::install'] ->
-    Class['totpcgi::config'] ->
-    Class['totpcgi::service'] ->
-  Anchor['totpcgi::end']
+  Anchor['totpcgi::begin']
+  ->Class['totpcgi::install']
+  ->Class['totpcgi::config']
+  ->Class['totpcgi::service']
+  ->Anchor['totpcgi::end']
 }

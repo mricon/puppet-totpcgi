@@ -29,7 +29,7 @@ class totpcgi::params {
   $rate_limit         = '3 30'
   $disallow_reuse     = true
   $totp_auth          = true
-  $hotp_counter       = undef
+  $hotp_counter       = 0
   $scratch_tokens_n   = '5'
   $bits               = '80'
   $totp_user_mask     = '$username@example.com'
